@@ -76,18 +76,11 @@ fn extract<'tree>(tree: &'tree Html, table_tr_selector: &Selector) -> Vec<RomaPa
 }
 
 trait Formatter {
-    fn extension() -> &'static str;
-
-    /// returns (filename, content)
     fn format(singles: &[RomaPair<'_>], doubles: &[RomaPair<'_>]) -> String;
 }
 
 struct MyCLanguageFormatter;
 impl Formatter for MyCLanguageFormatter {
-    fn extension() -> &'static str {
-        ".c"
-    }
-
     fn format(singles: &[RomaPair<'_>], doubles: &[RomaPair<'_>]) -> String {
         let body = singles
             .iter()
